@@ -12,10 +12,10 @@ python -m pip install cartimorph_vxm==0.5
 check the installation with
 
 ```python
-python -c "import CartiMorph_vxm as vxm; print(vxm.__file__)"  
+python -c "import CartiMorph_vxm as vxm; print(vxm.__version__)"  
 ```
 
-successful installation should return `[some paths]/CartiMorph_vxm/__init__.py`
+successful installation should return `0.5`
 
 
 
