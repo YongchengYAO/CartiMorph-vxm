@@ -6,7 +6,7 @@ A work based on [Voxelmorph](https://github.com/voxelmorph/voxelmorph) - an unsu
 ## Installation
 
 ```python
-python -m pip install cartimorph_vxm==0.5
+python -m pip install CartiMorph-vxm==0.5
 ```
 
 check the installation with
