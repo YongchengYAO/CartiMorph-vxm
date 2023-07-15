@@ -6,7 +6,7 @@ A work based on [Voxelmorph](https://github.com/voxelmorph/voxelmorph) - an unsu
 ## Installation
 
 ```python
-python -m pip install CartiMorph-vxm==0.6
+python -m pip install CartiMorph-vxm
 ```
 
 check the installation with
@@ -15,7 +15,7 @@ check the installation with
 python -c "import CartiMorph_vxm as vxm; print(vxm.__version__)"  
 ```
 
-successful installation should return `0.6`
+successful installation should return the version number
 
 
 
