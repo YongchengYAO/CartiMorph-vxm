@@ -1,11 +1,34 @@
 """
-tensorflow/keras networks for voxelmorph
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+CartiMorph-vxm
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-If you use this code, please cite one of the voxelmorph papers:
-https://github.com/voxelmorph/voxelmorph/blob/master/citations.bib
+CartiMorph-vxm (https://github.com/YongchengYAO/CartiMorph-vxm) is a work based on 
+VoxelMorph (https://github.com/voxelmorph/voxelmorph)
 
-Copyright 2020 Adrian V. Dalca
+If you use this code, please cite the following:
 
+    Yongcheng Yao, Junru Zhong, Liping Zhang, Sheheryar Khan, Weitian Chen.
+    "CartiMorph: a framework for automated knee articular cartilage morphometrics."
+    Medical Image Analysis
+
+Copyright 2023 Yongcheng Yao
+
+
+Please also cite the VoxelMorph papers:
+
+    @article{balakrishnan2019tmi,
+        title={VoxelMorph: A Learning Framework for Deformable Medical Image Registration},
+        author={Balakrishnan, Guha and Zhao, Amy and Sabuncu, Mert and Guttag, John and Adrian V. Dalca},
+        journal={IEEE TMI: Transactions on Medical Imaging},
+        volume={38},
+        issue={8},
+        pages={1788-1800},
+        organization={IEEE},
+        year={2019}
+    }
+
+-----------------------------------------------------------------------------------
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in 
 compliance with the License. You may obtain a copy of the License at
 
@@ -15,6 +38,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
 implied. See the License for the specific language governing permissions and limitations under 
 the License.
+-----------------------------------------------------------------------------------
 """
 
 
@@ -738,7 +762,7 @@ class TemplateCreation(ne.modelio.LoadableModel):
     """
 
     @ne.modelio.store_config_args
-    def __init__(self, inshape, nb_unet_features=None, mean_cap=100, atlas_feats=1, src_feats=1,
+    def __init__(self, inshape, nb_unet_features=None, mean_cap=100, atlas_feats=1, src_feats=1, flag_freezeTemp=False,
                  **kwargs):
         """ 
         Parameters:
@@ -762,6 +786,11 @@ class TemplateCreation(ne.modelio.LoadableModel):
             name='atlas'
         )
         atlas_tensor = atlas_layer(source_input)
+
+        # (added by YC) freeze template learning
+        if flag_freezeTemp:
+            atlas_layer.trainable = False
+
         warp_input_model = keras.Model(inputs=[source_input], outputs=[
                                           atlas_tensor, source_input])
 
